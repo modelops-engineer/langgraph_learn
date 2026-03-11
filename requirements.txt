@@ -1,0 +1,40 @@
+# pytorch
+torch
+
+# langgraph
+langgraph
+
+# langchain
+langchain
+langchain-core
+langchain-community
+
+# token
+tiktoken
+
+# vector store
+faiss-cpu
+
+# youtube api
+youtube-transcript-api
+
+# OpenAI
+langchain-openai
+openai
+
+# huggingface
+langchain-huggingface
+transformers
+huggingface-hub
+
+# ḍotenv
+python-dotenv
+
+# utils
+numpy
+pandas
+typing
+pydantic
+requests
+ipython
+duckduckgo-search
