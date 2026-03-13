@@ -42,6 +42,20 @@ Education and human capital development will play a crucial role in navigating t
 In conclusion, Artificial Intelligence represents one of the most consequential technological transformations of the modern era. Its influence extends across economic systems, governance structures, healthcare, and global geopolitics. While AI offers unprecedented opportunities to enhance productivity, improve public services, and address complex global challenges, it also poses significant ethical, social, and regulatory dilemmas. The future of AI will ultimately depend on how societies choose to govern and integrate this powerful technology. If guided by principles of inclusivity, transparency, and human welfare, AI has the potential to become a transformative force that advances collective progress and reshapes the world for the better.
 """
 
+essay2 = """
+Artificial Intelligence Changing the World
+
+Artificial Intelligence is a technology which is changing the world very fast in today’s modern era. Artificial Intelligence is called AI and it is very important technology nowadays. Many countries are using AI for development and improvement of their systems. Because of this reason AI is becoming more popular day by day.
+
+AI is used in many places like hospitals, companies, schools and many other industries. In hospitals AI helps doctors to detect diseases. In companies AI helps to do work faster and improve productivity. AI is also used in mobile phones, computers and other electronic devices. Because of these reasons AI is becoming necessary for everyone.
+
+However AI also has some disadvantages. AI can reduce jobs because machines can do work which humans used to do earlier. This can create unemployment problems in society. Also AI systems depend on data and sometimes the data may not be correct. Because of this AI decisions can also become wrong.
+
+Another important point is that many countries are investing in AI research. They want to become leaders in AI technology. This can increase competition between nations. Governments should make rules and policies to control AI so that it is used properly.
+
+In conclusion, Artificial Intelligence is a very useful technology which is changing the world rapidly. It has many advantages and some disadvantages. If AI is used carefully and responsibly then it can help humanity to progress in future.
+"""
+
 class EssayState(TypedDict):
 
     essay : str
@@ -120,7 +134,7 @@ workflow = graph.compile()
 #     f.write(png_bytes)
 
 initial_state = {
-    'essay' : essay
+    'essay' : essay2
 }
 
 result = workflow.invoke(initial_state)
