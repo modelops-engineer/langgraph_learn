@@ -34,14 +34,34 @@ end_edge = graph.add_edge('chatnode', END)
 
 chatbot = graph.compile()
 
+msg_state = {'messages': []}
+while True:
+    user_message = input("type your query : ")
 
-initial_state= {
-    'messages' : [
-        HumanMessage(content='What is the winter capital of Karnataka?')
-    ]
-}
+    print('User : ', user_message)
+
+    if user_message.strip().lower() in ['exit', 'quit', 'bye']:
+        break
+
+    # msg_state= {
+    # 'messages' : [
+    #     HumanMessage(content=user_message)
+    #     ]
+    # }
+
+    msg_state['messages'].append(HumanMessage(content=user_message))
+
+    response = chatbot.invoke(msg_state)
+    msg_state['messages'].append(response['messages'][-1])
+    print('AI : ', response['messages'][-1].content)
+
+# initial_state= {
+#     'messages' : [
+#         HumanMessage(content='What is the winter capital of Karnataka?')
+#     ]
+# }
 
 
-result = chatbot.invoke(initial_state)
+# result = chatbot.invoke(initial_state)
 
-print(result)
+# print(result)
