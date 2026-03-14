@@ -26,7 +26,7 @@ def llm_qa(state:LLMState) -> LLMState:
 
     # prompt
     prompt = PromptTemplate(
-    template=''''
+    template='''
     Answer the following {question} in a shot paragraph, but if it is a factual question just answer in 1 line do not elongate.
     ''',
     input_variables=['question']
