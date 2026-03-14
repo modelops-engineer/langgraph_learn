@@ -4,6 +4,7 @@ from langgraph.graph.message import add_messages
 from langchain_core.messages import HumanMessage, BaseMessage, SystemMessage
 from dotenv import load_dotenv
 from typing import TypedDict, Annotated
+from langgraph.checkpoint.memory import MemorySaver
 
 load_dotenv()
 
@@ -22,6 +23,7 @@ def chatnode(state: ChatbotState) -> ChatbotState:
 
     return {'messages': [response]}
 
+checkpointer = MemorySaver()
 
 graph = StateGraph(ChatbotState)
 
@@ -32,9 +34,10 @@ chatedge = graph.add_edge(START, 'chatnode')
 end_edge = graph.add_edge('chatnode', END)
 
 
-chatbot = graph.compile()
+chatbot = graph.compile(checkpointer=checkpointer)
 
-msg_state = {'messages': []}
+
+thread_id = '1'
 while True:
     user_message = input("type your query : ")
 
@@ -43,16 +46,14 @@ while True:
     if user_message.strip().lower() in ['exit', 'quit', 'bye']:
         break
 
-    # msg_state= {
-    # 'messages' : [
-    #     HumanMessage(content=user_message)
-    #     ]
-    # }
+    config = {'configurable' : {'thread_id' : thread_id}}
 
-    msg_state['messages'].append(HumanMessage(content=user_message))
+    response = chatbot.invoke({
+    'messages' : [
+        HumanMessage(content=user_message)
+        ]
+    }, config=config)
 
-    response = chatbot.invoke(msg_state)
-    msg_state['messages'].append(response['messages'][-1])
     print('AI : ', response['messages'][-1].content)
 
 # initial_state= {
